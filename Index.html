@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day 💖</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        animation: fadeIn 2s ease forwards;
+    }
+
+    p {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+        animation: fadeIn 3s ease forwards;
+    }
+
+    .heart {
+        font-size: 4em;
+        color: red;
+        animation: beat 1s infinite;
+        margin-bottom: 20px;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 12px;
+        background: #ff4d6d;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background: #ff1a4d;
+        transform: scale(1.1);
+    }
+
+    img {
+        width: 200px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(255,0,0,0.5);
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+
+    /* Falling hearts */
+    .falling-heart {
+        position: absolute;
+        font-size: 1.5em;
+        color: rgba(255,0,0,0.7);
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0.8; }
+        100% { top: 110%; transform: translateX(50px) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<h1>Happy Valentine's Day 💖</h1>
+<p>You are my everything ❤️</p>
+
+<!-- Her picture -->
+<img src="my love.jpg" alt="My Love">
+<div class="heart">❤️</div>
+
+<button onclick="alert('I love you forever 😘 you mean the world to my forever half')">Click Me 💌</button>
+
+<script>
+    // Create falling hearts
+    const colors = ['#ff4d6d','#ff1a4d','#ff6666','#ff99aa'];
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.fontSize = (Math.random()*20 + 10) + 'px';
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(heart);
+
+        // Remove after falling
+        setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300); // create hearts every 0.3s
+</script>
+
+</body>
+</html>
